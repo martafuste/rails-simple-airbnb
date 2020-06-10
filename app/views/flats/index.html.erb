@@ -1,0 +1,20 @@
+<h1>AirPnP</h1>
+
+<div class="container">
+  <div class="row">
+    <% @flats.each do |f| %>
+    <div class="col-4">
+
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= f.name %></h5>
+    <p class="card-text"><% f.description %></p>
+    <a href="#" class="btn btn-primary"><%= link_to 'See details', flats_path(f) %></a>
+  </div>
+</div>
+</div>
+<% end %>
+  </div>
+</div>

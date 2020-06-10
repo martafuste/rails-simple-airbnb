@@ -1,31 +1,37 @@
 class FlatsController < ApplicationController
 before_action :set_flat, only: [:show, :edit]
 
-def index
-  @flats = Flat.all
-end
+  def index
+    @flats = Flat.all
+  end
 
-def show
-  @flat = Flat.new
-end
+  def show
 
-def new
-@flat= Flat.new
-end
+  end
 
-def edit
+  def new
+  @flat= Flat.new
+  end
 
-end
-def create
+  def edit
 
+  end
+  def create
+    @flat = Flat.new(flat_params)
+    if @flat.save
+      redirect_to @flat, notice: "Flat succesfully created"
+    else
+      render :new
+    end
+  end
 
+  private
 
-def set_flat
-  @flat = Flat.find(params[:id])
-end
+    def set_flat
+      @flat = Flat.find(params[:id])
+    end
 
-def flat_params
-  params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
-end
-
+    def flat_params
+      params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
+    end
 end
